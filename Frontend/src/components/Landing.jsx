@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { 
   Sparkles, 
-  Shield,
-  Users,
+  Brain,
+  TrendingUp,
   ArrowRight,
-  Star,
-  Banknote,
-  Ticket
+  BarChart2,
+  Cpu,
+  Target,
+  PieChart
 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { Card } from './ui/Card';
@@ -46,46 +47,46 @@ export const Landing = () => {
 
   const features = [
     {
-      icon: Shield,
-      title: "Guaranteed Authenticity",
-      description: "Non-transferable digital tickets with cryptographic proof of ownership, eliminating counterfeits and unauthorized resales.",
-      techDetail: "Secure smart contract validation ensures each ticket's authenticity"
+      icon: Brain,
+      title: "AI-Powered Analysis",
+      description: "Advanced machine learning algorithms analyze real-time DeFi data to identify optimal investment opportunities and strategies.",
+      techDetail: "Neural networks trained on bitsCrunch historical data"
     },
     {
-      icon: Star,
-      title: "Community Trust Network",
-      description: "Transparent reputation system built on verified attendance and reviews, creating a reliable event ecosystem.",
-      techDetail: "On-chain reputation scoring for organizers and attendees"
+      icon: Target,
+      title: "Risk-Adjusted Strategies",
+      description: "Personalized investment strategies based on your risk tolerance and market conditions, with automated rebalancing.",
+      techDetail: "Dynamic portfolio optimization algorithms"
     },
     {
-      icon: Banknote,
-      title: "Instant Value Transfer",
-      description: "Direct financial settlement between organizers and attendees with automated escrow protection.",
-      techDetail: "Smart contract-managed secure payment system"
+      icon: BarChart2,
+      title: "Real-Time Analytics",
+      description: "Comprehensive market analysis with real-time insights from multiple DeFi protocols and liquidity pools.",
+      techDetail: "Integration with bitsCrunch's advanced DeFi APIs"
     },
     {
-      icon: Users,
-      title: "Social Discovery",
-      description: "Find and connect with like-minded event enthusiasts through shared experiences and interests.",
-      techDetail: "Decentralized social graph of events and attendees"
+      icon: Cpu,
+      title: "Smart Contract Automation",
+      description: "Automated strategy execution with secure smart contracts for efficient portfolio management.",
+      techDetail: "Audited smart contract infrastructure"
     }
   ];
 
   const stats = [
     {
-      value: "0.2 ETH",
-      label: "Organizer Stake",
-      description: "Required stake for hosting events"
+      value: "$2.8B",
+      label: "Total Value Optimized",
+      description: "Assets under optimization"
     },
     {
-      value: "100%",
-      label: "Direct Settlement",
-      description: "Instant organizer payments"
+      value: "+32%",
+      label: "Average APY Increase",
+      description: "Compared to manual strategies"
     },
     {
-      value: "Verified",
-      label: "Event Reviews",
-      description: "Only from confirmed attendees"
+      value: "< 0.5%",
+      label: "Maximum Drawdown",
+      description: "Historical risk management"
     }
   ];
 
@@ -114,34 +115,35 @@ export const Landing = () => {
 
             <h1 className="text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 text-transparent bg-clip-text">
-                Experience Trust
+                Optimize Your DeFi
               </span>
               <br />
               <span className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-transparent bg-clip-text">
-                in Events
+                With AI Intelligence
               </span>
             </h1>
 
             <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
-              A new era of authentic event experiences powered by verifiable digital tickets,
-              community trust, and instant settlements. Connect, attend, and build your event reputation.
+              Harness the power of artificial intelligence to maximize your DeFi returns. 
+              Our platform analyzes market data in real-time to provide optimized investment 
+              strategies tailored to your goals.
             </p>
 
             <div className="flex justify-center gap-6">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button onClick={() => navigate('/events')} className="group">
-                  <span>Discover Events</span>
+                <Button onClick={() => navigate('/dashboard')} className="group">
+                  <span>Start Optimizing</span>
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
-                  onClick={() => navigate('/create')}
+                  onClick={() => navigate('/strategies')}
                   variant="secondary"
                   className="group border border-violet-500/20 hover:border-violet-500/50"
                 >
-                  <span>Host Event</span>
-                  <Ticket className="w-4 h-4 ml-2 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <span>View Strategies</span>
+                  <PieChart className="w-4 h-4 ml-2 opacity-50 group-hover:opacity-100 transition-opacity" />
                 </Button>
               </motion.div>
             </div>
@@ -157,16 +159,16 @@ export const Landing = () => {
             <Card glowing className="border border-violet-500/20">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 text-center">
                 <div>
-                  <p className="text-violet-400 font-medium">Verified Tickets</p>
-                  <p className="text-gray-400 mt-1">Cryptographic proof of authenticity</p>
+                  <p className="text-violet-400 font-medium">Real-Time Analysis</p>
+                  <p className="text-gray-400 mt-1">Continuous market monitoring</p>
                 </div>
                 <div>
-                  <p className="text-violet-400 font-medium">Protected Payments</p>
-                  <p className="text-gray-400 mt-1">Smart contract secured transactions</p>
+                  <p className="text-violet-400 font-medium">Smart Automation</p>
+                  <p className="text-gray-400 mt-1">Automated strategy execution</p>
                 </div>
                 <div>
-                  <p className="text-violet-400 font-medium">Community Trust</p>
-                  <p className="text-gray-400 mt-1">Verified attendee reviews</p>
+                  <p className="text-violet-400 font-medium">Risk Management</p>
+                  <p className="text-gray-400 mt-1">Advanced risk mitigation</p>
                 </div>
               </div>
             </Card>
@@ -192,7 +194,7 @@ export const Landing = () => {
           >
             <Card glowing className="border border-violet-500/20">
               <h3 className="text-2xl font-bold text-center pt-8 mb-8">
-                Platform Guarantees
+                Platform Performance
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {stats.map((stat, index) => (

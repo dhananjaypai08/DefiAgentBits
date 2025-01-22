@@ -7,4 +7,3 @@ export const Card = ({ children, glowing = false }) => (
       {children}
     </div>
   );
-  
