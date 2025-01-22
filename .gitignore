@@ -1,0 +1,8 @@
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.env
+Frontend/.env.local
+
+agentBackend/src/__pycache__/
+agentBackend/.env
+agentBackend/env/
