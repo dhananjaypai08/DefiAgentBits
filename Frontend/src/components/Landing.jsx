@@ -138,7 +138,7 @@ export const Landing = () => {
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
-                  onClick={() => navigate('/strategies')}
+                  onClick={() => navigate('/chat')}
                   variant="secondary"
                   className="group border border-violet-500/20 hover:border-violet-500/50"
                 >

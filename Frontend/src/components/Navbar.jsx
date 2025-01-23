@@ -10,14 +10,15 @@ export const Navbar = () => (
           DefiOptimizer
         </Link>
         <div className="flex items-center gap-6">
-          <Link to="/events" className="text-gray-300 hover:text-white">
+          <Link to="/dashboard" className="text-gray-300 hover:text-white">
           <ViewIcon/>
-            Events
+            Dashboard
           </Link>
-          <Link to="/create" className="text-gray-300 hover:text-white">
+           <Link to="/chat" className="text-gray-300 hover:text-white">
           <FormInputIcon/>
-            Create Event
+            AI Agent
           </Link>
+          {/*
           <Link to="/reputation" className="text-gray-300 hover:text-white">
           <ChartAreaIcon/>
             On-chain Reputation
@@ -25,7 +26,7 @@ export const Navbar = () => (
           <Link to="/profile" className="text-gray-300 hover:text-white">
           <User2Icon/>
             Profile
-          </Link>
+          </Link> */}
           <ConnectKitButton />
         </div>
       </div>
