@@ -35,3 +35,20 @@ DeFiAgentBits addresses these challenges by combining AI and blockchain analytic
 - **Visualization**: Recharts
 - **Architecture**: `Reactive AI pipeline with RAG (Retrieval-Augmented Generation) for real-time strategy generation and insights.`
 
+## Setup the Project
+1. Clone the Repo
+2. Setup Backend 
+    ```
+    cd agentBackend
+    python3 -m venv env
+    source env/bin/activate
+    pip install -r requirements.txt
+    python3 src/main.py
+    ```
+3. Setup Frontend
+    ```
+    cd Frontend
+    npm i
+    npm run dev
+    ```
+Your project should be running locally : [here](http://localhost:5173)
