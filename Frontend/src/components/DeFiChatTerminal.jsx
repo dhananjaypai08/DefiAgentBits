@@ -161,19 +161,44 @@ const DeFiChatTerminal = () => {
   const handleSubmit = async (e) => {
     e?.preventDefault();
     if (!input.trim()) return;
-
+  
     // Add user message
     const userMessage = { type: 'user', content: input };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
-
+  
     try {
       const response = await axios.post('http://localhost:8000/stream_rag_output', {
         prompt: input
       });
-    //   console.log(response.data);
-      const formattedResponse = formatJSON(response.data);
+  
+      // Remove code block markers and parse JSON
+      let formattedResponse;
+      if (typeof response.data === 'string') {
+        // Remove ```json and ``` if present
+        const cleanedData = response.data
+          .replace(/^```json\s*/, '')
+          .replace(/```\s*$/, '')
+          .trim();
+        
+        try {
+          formattedResponse = JSON.parse(cleanedData);
+        } catch (parseError) {
+          // Fallback parsing
+          formattedResponse = {
+            protocol_name: "Error parsing response",
+            protocol_description: "Unable to parse the API response",
+            protocol_steps: [],
+            risks: ["Response parsing failed"],
+            alternative_protocols: []
+          };
+          console.error("JSON Parsing Error:", parseError);
+        }
+      } else {
+        // If it's already an object, use it directly
+        formattedResponse = response.data;
+      }
       
       // Add AI response
       setMessages(prev => [
@@ -228,7 +253,7 @@ const DeFiChatTerminal = () => {
   };
 
   return (
-    <div className="bg-black/90 min-h-[calc(100vh-64px)] flex flex-col p-6">
+    <div className="min-h-[calc(100vh-64px)] bg-black p-20 mt-1">
       <div className="flex items-center mb-4">
         <Terminal className="w-6 h-6 mr-2 text-green-500" />
         <h2 className="text-xl font-mono text-green-400">

@@ -47,7 +47,7 @@ async def get_pool_metadata(blockchain : str, pair_address: str):
     response = requests.get(base_url_v2+"/pool/metadata?blockchain="+blockchain+"&pair_address="+pair_address, headers=headers)
     data = response.json()
     global documents
-    documents.append(data)
+    documents.append(str(data))
     return data
 
 @app.get("/get_pool_metric")
@@ -55,7 +55,7 @@ async def get_pool_metric(pair_address: str):
     response = requests.get(base_url+"/pool/metrics?pair_address="+pair_address, headers=headers)
     data = response.json()
     global documents
-    documents.append(data)
+    documents.append(str(data))
     return data
 
 @app.get("/get_pool_by_protocol")
@@ -63,15 +63,15 @@ async def get_pool_by_protocol(protocol: str):
     response = requests.get(base_url+"/pool?protocol="+protocol, headers=headers)
     data = response.json()
     global documents
-    documents.append(data)
+    documents.append(str(data))
     return data
 
 @app.get("/get_dex_pool_metrics")
 async def get_dex_pool_metrics(blockchain: str, pair_address: str):
-    response = requests.get(base_url+"/pool/metrics?blockchain="+blockchain+"&pair_address="+pair_address, headers=headers)
+    response = requests.get(base_url_v2+"/pool/metrics?blockchain="+blockchain+"&pair_address="+pair_address, headers=headers)
     data = response.json()
     global documents
-    documents.append(data)
+    documents.append(str(data))
     return data
 
 @app.get("/get_protocol_metadata")
@@ -79,7 +79,7 @@ async def get_protocol_metadata(blockchain: str, protocol: str):
     response = requests.get(base_url_v2+"/pool?blockchain="+blockchain+"protocol="+protocol, headers=headers)
     data = response.json()
     global documents
-    documents.append(data)
+    documents.append(str(data))
     return data
 
 @app.get("/get_defi_protocols")
@@ -87,7 +87,7 @@ async def get_defi_protocols(blockchain: str):
     response = requests.get(base_url_v2+"/pool/supported_protocols?blockchain="+blockchain, headers=headers)
     data = response.json()
     global documents
-    documents.append(data)
+    documents.append(str(data))
     return data
 
 @app.post("/stream_chat")

@@ -131,18 +131,18 @@ export const Landing = () => {
 
             <div className="flex justify-center gap-6">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button onClick={() => navigate('/dashboard')} className="group">
+                <Button onClick={() => navigate('/chat')} className="group">
                   <span>Start Optimizing</span>
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
-                  onClick={() => navigate('/chat')}
+                  onClick={() => navigate('/dashboard')}
                   variant="secondary"
                   className="group border border-violet-500/20 hover:border-violet-500/50"
                 >
-                  <span>View Strategies</span>
+                  <span>View Protocols</span>
                   <PieChart className="w-4 h-4 ml-2 opacity-50 group-hover:opacity-100 transition-opacity" />
                 </Button>
               </motion.div>
