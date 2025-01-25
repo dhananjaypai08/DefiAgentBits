@@ -34,37 +34,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-protocols = ["uniswap", "sushiswap", "balancer", "curve", "compound", "aave", "dydx", "cream", "maker", "yearn", "synthetix", "1inch", "loopring", "bancor", "kyber", "mstable", "dodo", "mcdex", "perpetual", "defiswap", "defisaver", "defiexplore"]
 blockchains = ["ethereum", "polygon", "avalanche", "linea"]
 documents = []
+protocols = [0]*4
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/get_pool_metadata")
-async def get_pool_metadata(blockchain : str, pair_address: str):
-    response = requests.get(base_url_v2+"/pool/metadata?blockchain="+blockchain+"&pair_address="+pair_address, headers=headers)
-    data = response.json()
-    global documents
-    documents.append(str(data))
-    return data
-
-@app.get("/get_pool_metric")
-async def get_pool_metric(pair_address: str):
-    response = requests.get(base_url+"/pool/metrics?pair_address="+pair_address, headers=headers)
-    data = response.json()
-    global documents
-    documents.append(str(data))
-    return data
-
-@app.get("/get_pool_by_protocol")
-async def get_pool_by_protocol(protocol: str):
-    response = requests.get(base_url+"/pool?protocol="+protocol, headers=headers)
-    data = response.json()
-    global documents
-    documents.append(str(data))
-    return data
 
 @app.get("/get_dex_pool_metrics")
 async def get_dex_pool_metrics(blockchain: str, pair_address: str):
@@ -76,18 +53,16 @@ async def get_dex_pool_metrics(blockchain: str, pair_address: str):
 
 @app.get("/get_protocol_metadata")
 async def get_protocol_metadata(blockchain: str, protocol: str):
-    response = requests.get(base_url_v2+"/pool?blockchain="+blockchain+"protocol="+protocol, headers=headers)
-    data = response.json()
-    global documents
-    documents.append(str(data))
+    response = requests.get(base_url_v2+"/pool?blockchain="+blockchain+"&protocol="+protocol+"&offset=0&limit=30", headers=headers)
+    data = response.json()["data"]
+    
     return data
 
 @app.get("/get_defi_protocols")
 async def get_defi_protocols(blockchain: str):
     response = requests.get(base_url_v2+"/pool/supported_protocols?blockchain="+blockchain, headers=headers)
-    data = response.json()
-    global documents
-    documents.append(str(data))
+    data = response.json()["data"]
+
     return data
 
 @app.post("/stream_chat")

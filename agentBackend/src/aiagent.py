@@ -107,3 +107,4 @@ async def structured_rag_output(prompt: str, documents: list):
         return res.message.content[0].text
     except Exception as e:
         raise Exception(f"Error generating response: {str(e)}") 
+    
