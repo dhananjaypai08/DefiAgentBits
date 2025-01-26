@@ -43,15 +43,15 @@ const formatPercentage = (value) => {
 const ProtocolDashboard = () => {
   // State Management
   const [blockchains, setBlockchains] = useState([
-    'ethereum', 'polygon', 'avalanche', 'linea', 'optimism', 'arbitrum'
+    'ethereum', 'polygon', 'avalanche', 'linea'
   ]);
   const [selectedBlockchain, setSelectedBlockchain] = useState('ethereum');
   const [protocols, setProtocols] = useState([]);
   const [selectedProtocol, setSelectedProtocol] = useState(null);
   const [protocolPairs, setProtocolPairs] = useState([]);
   const [selectedPair, setSelectedPair] = useState('');
-  const [selectedToken0, setSelectedToken0] = useState('');
-  const [selectedToken1, setSelectedToken1] = useState('');
+  // const [selectedToken0, setSelectedToken0] = useState('');
+  // const [selectedToken1, setSelectedToken1] = useState('');
   
   // Metrics States
   const [poolMetrics, setPoolMetrics] = useState(null);
@@ -99,8 +99,8 @@ const ProtocolDashboard = () => {
       console.log(metadata);
       setProtocolPairs(metadata);
       setSelectedPair(metadata[0]?.pair_address || '');
-      setSelectedToken0(metadata[0]?.token0_symbol || '');
-      setSelectedToken1(metadata[0]?.token1_symbol || '');
+      // setSelectedToken0(metadata[0]?.token0_symbol || '');
+      // setSelectedToken1(metadata[0]?.token1_symbol || '');
     } catch (err) {
       // setError('Failed to fetch protocol metadata');
       setProtocolPairs([]);
@@ -143,12 +143,12 @@ const ProtocolDashboard = () => {
       // Liquidity Distribution
       const liquidityData = [
         { 
-          name: metrics.token0_symbol || selectedToken0, 
+          name: metrics.token0_symbol || 'Token 0', 
           value: metrics.token0_tvl,
           color: '#10B981' 
         },
         { 
-          name: metrics.token1_symbol || selectedToken1, 
+          name: metrics.token1_symbol || 'Token 1', 
           value: metrics.token1_tvl,
           color: '#3B82F6' 
         }
@@ -406,11 +406,11 @@ const ProtocolDashboard = () => {
   className="grid grid-cols-2 gap-8 mt-8"
 >
   <Card glowing className="p-6">
-    <h3 className="text-xl font-bold mb-4 text-violet-400">{selectedToken0} Details</h3>
+    <h3 className="text-xl font-bold mb-4 text-violet-400">Token 0: Details</h3>
     <div className="space-y-2">
       <div className="flex justify-between">
         <span className="text-gray-400">Token Symbol</span>
-        <span className="font-semibold">{poolMetrics.token0_symbol || selectedToken0}</span>
+        <span className="font-semibold">{poolMetrics.token0_symbol || 'Token 0'}</span>
       </div>
       <div className="flex justify-between">
         <span className="text-gray-400">Current Price</span>
@@ -432,11 +432,11 @@ const ProtocolDashboard = () => {
   </Card>
 
   <Card glowing className="p-6">
-    <h3 className="text-xl font-bold mb-4 text-violet-400">{selectedToken1} Details</h3>
+    <h3 className="text-xl font-bold mb-4 text-violet-400">Token 1: Details</h3>
     <div className="space-y-2">
       <div className="flex justify-between">
         <span className="text-gray-400">Token Symbol</span>
-        <span className="font-semibold">{poolMetrics.token1_symbol || selectedToken1}</span>
+        <span className="font-semibold">{poolMetrics.token1_symbol || 'Token 1'}</span>
       </div>
       <div className="flex justify-between">
         <span className="text-gray-400">Current Price</span>
