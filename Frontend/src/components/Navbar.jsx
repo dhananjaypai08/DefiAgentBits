@@ -7,7 +7,7 @@ export const Navbar = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between h-16 items-center">
         <Link to="/" className="text-xl font-bold text-violet-500">
-          DefiOptimizer
+          DefiAgentBits
         </Link>
         <div className="flex items-center gap-6">
           <Link to="/dashboard" className="text-gray-300 hover:text-white">

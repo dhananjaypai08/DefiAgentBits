@@ -61,6 +61,7 @@ async def get_protocol_metadata(blockchain: str, protocol: str):
 @app.get("/get_defi_protocols")
 async def get_defi_protocols(blockchain: str):
     response = requests.get(base_url_v2+"/pool/supported_protocols?blockchain="+blockchain, headers=headers)
+    print(response)
     data = response.json()["data"]
 
     return data
